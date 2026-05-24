@@ -30,3 +30,6 @@ Do not upload:
 - old package-lock.json
 
 If an old package-lock.json exists in GitHub, delete it before redeploying.
+
+
+Update: compact card alignment applied across contact and all sections.
