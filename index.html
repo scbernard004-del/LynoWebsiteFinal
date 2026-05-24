@@ -1423,5 +1423,204 @@ ${t.get(`message`)||``}`;window.location.href=ad(`Website enquiry for Lyno Assoc
 })();
 </script>
 
+
+<style id="lyno-contact-alignment-final">
+/* FINAL CONTACT PAGE CARD + SECTION ALIGNMENT FIX */
+.contact-shell{
+  width:100%!important;
+}
+.contact-shell>.page-hero{
+  max-width:900px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  margin-bottom:clamp(1.4rem,3vw,2.2rem)!important;
+}
+.contact-grid{
+  width:min(100%,1180px)!important;
+  margin:0 auto!important;
+  display:grid!important;
+  grid-template-columns:minmax(300px,.96fr) minmax(360px,1.04fr)!important;
+  gap:clamp(1rem,2.6vw,2rem)!important;
+  align-items:stretch!important;
+}
+.contact-grid>*{
+  min-width:0!important;
+}
+.contact-cards{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:1rem!important;
+  align-content:stretch!important;
+  align-self:stretch!important;
+  height:100%!important;
+}
+.contact-cards .contact-card,
+.contact-cards .numbers{
+  margin:0!important;
+  width:100%!important;
+  min-width:0!important;
+  box-shadow:var(--shadow)!important;
+}
+.contact-card{
+  display:grid!important;
+  align-content:center!important;
+  justify-items:start!important;
+  gap:.42rem!important;
+  min-height:128px!important;
+  padding:clamp(1rem,2vw,1.35rem)!important;
+}
+.contact-card svg{
+  margin:0 0 .25rem 0!important;
+}
+.contact-card h3{
+  margin:0!important;
+  line-height:1.18!important;
+}
+.contact-card p{
+  margin:0!important;
+  line-height:1.55!important;
+  overflow-wrap:anywhere!important;
+}
+.contact-cards .numbers{
+  grid-column:1/-1!important;
+  min-height:108px!important;
+  padding:clamp(1rem,2vw,1.35rem)!important;
+  display:grid!important;
+  align-content:center!important;
+  gap:.35rem!important;
+}
+.contact-cards .numbers p{
+  margin:0!important;
+  line-height:1.55!important;
+  overflow-wrap:anywhere!important;
+}
+.contact-side{
+  display:grid!important;
+  grid-template-rows:auto minmax(220px,1fr)!important;
+  gap:1rem!important;
+  align-self:stretch!important;
+  min-width:0!important;
+}
+.contact-form{
+  width:100%!important;
+  min-width:0!important;
+  display:grid!important;
+  gap:1rem!important;
+  align-content:start!important;
+  padding:clamp(1rem,2.4vw,2rem)!important;
+}
+.contact-form input,
+.contact-form textarea,
+.contact-form button{
+  width:100%!important;
+  max-width:100%!important;
+}
+.contact-form textarea{
+  min-height:170px!important;
+  resize:vertical!important;
+}
+.contact-side .image-card,
+.contact-side .image-card.compact{
+  min-height:clamp(230px,22vw,330px)!important;
+  height:100%!important;
+}
+.map-section{
+  width:min(100%,1180px)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+.map-card,
+.map-card iframe{
+  width:100%!important;
+}
+.split-section.inner-section,
+.about-grid,
+.service-feature,
+.section-grid{
+  width:min(100%,1180px)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+.client-grid,.services-grid,.partner-grid,.values-grid,.mini-grid,.feature-list{
+  align-items:stretch!important;
+}
+.client-card,.service-card,.partner-card,.info-block,.feature-card,.glass-panel{
+  height:100%!important;
+}
+@media (max-width:1050px){
+  .contact-grid{
+    grid-template-columns:1fr!important;
+    max-width:760px!important;
+  }
+  .contact-side{
+    order:1!important;
+  }
+  .contact-cards{
+    order:2!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  .contact-cards .numbers{
+    grid-column:1/-1!important;
+  }
+}
+@media (max-width:720px){
+  section.contact-shell{
+    padding-left:clamp(.9rem,4vw,1.1rem)!important;
+    padding-right:clamp(.9rem,4vw,1.1rem)!important;
+  }
+  .contact-grid{
+    gap:1rem!important;
+  }
+  .contact-cards{
+    grid-template-columns:1fr!important;
+  }
+  .contact-cards .numbers{
+    grid-column:auto!important;
+  }
+  .contact-card,
+  .contact-cards .numbers,
+  .contact-form{
+    border-radius:1.15rem!important;
+  }
+  .contact-card{
+    min-height:112px!important;
+    padding:1rem!important;
+  }
+  .contact-form textarea{
+    min-height:150px!important;
+  }
+  .contact-side .image-card{
+    min-height:240px!important;
+  }
+}
+@media (max-width:420px){
+  .contact-card,
+  .contact-cards .numbers,
+  .contact-form{
+    padding:.9rem!important;
+  }
+  .contact-form{
+    gap:.75rem!important;
+  }
+}
+</style>
+
+<script id="lyno-contact-clean-final">
+(function(){
+  function cleanContact(){
+    document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp"], .quick-btn.whatsapp').forEach(function(el){
+      var card = el.closest('.contact-card') || el;
+      if(card) card.remove();
+    });
+    document.querySelectorAll('.quick-actions').forEach(function(box){
+      if(!box.querySelector('a:not(.whatsapp)')) box.remove();
+    });
+  }
+  document.addEventListener('DOMContentLoaded', cleanContact);
+  window.addEventListener('load', cleanContact);
+  new MutationObserver(function(){ cleanContact(); }).observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
+
 </body>
 </html>
