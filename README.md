@@ -1,32 +1,32 @@
 # Lyno Associate Website
 
-Final GitHub/Vercel-ready package.
+Root-level Vercel/GitHub package.
 
 ## Local test
+
 ```bash
 npm install
 npm run dev
 ```
-Open: http://localhost:5173
 
-## Upload to GitHub
-Upload these root files and folders:
+Open http://localhost:5173
+
+## GitHub upload
+
+Upload/replace:
+
 - index.html
 - package.json
-- package-lock.json
 - vercel.json
+- .npmrc
 - .gitignore
 - README.md
 - public
 
 Do not upload:
+
 - node_modules
 - dist
+- old package-lock.json
 
-## Vercel settings
-- Framework Preset: Vite
-- Install Command: npm install
-- Build Command: npm run build
-- Output Directory: dist
-
-If Vercel does not update, click Redeploy and choose **Clear build cache**.
+If an old package-lock.json exists in GitHub, delete it before redeploying.
